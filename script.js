@@ -2,11 +2,13 @@
 
 game = {
     coins : 10,
+    costIncrease : 1.3,
 
     diamonds: {
         amount: 0,
         onReset: 0,
         coinsNeeded: 10000000000000,
+        increase: 4,
     },
 
     // COIN UPGRADES
@@ -17,7 +19,13 @@ game = {
         {cost: 10000, amount: 0, bought: 0},
         {cost: 100000, amount: 0, bought: 0},
         {cost: 1000000, amount: 0, bought: 0},
-        {cost: 10000000, amount: 0, bought: 0}
+        {cost: 10000000, amount: 0, bought: 0},
+      ],
+
+    diamondUpgrades : [
+        {cost: 1, bought: false, effect: 0.1},
+        {cost: 5, bought: false, effect: 1},
+        {cost: 20, bought: false, effect: 0},
       ]
 }
 
@@ -37,8 +45,24 @@ setInterval(function setText() {
     document.getElementById('coinUpgrade5').innerHTML = '<b>Coin Upgrade 5</b><br> Amount: ' + format(game.coinUpgrades[4].amount) + '<br>Bought: ' + format(game.coinUpgrades[4].bought) + '<br>Cost: ' + format(game.coinUpgrades[4].cost)+ ' Coins';
     document.getElementById('coinUpgrade6').innerHTML = '<b>Coin Upgrade 6</b><br> Amount: ' + format(game.coinUpgrades[5].amount) + '<br>Bought: ' + format(game.coinUpgrades[5].bought) + '<br>Cost: ' + format(game.coinUpgrades[5].cost)+ ' Coins';
 
-    document.getElementById('resetButton').innerHTML = 'Reset Coins and Coin Upgrades to get Diamonds<br>You need 1.00e13 Diamonds to Reset<br>On reset you will gain ' + format(game.diamonds.onReset) + ' Diamonds'
+    document.getElementById('resetButton').innerHTML = 'Reset Coins and Coin Upgrades to get Diamonds<br>You need 1.00e13 Diamonds to Reset<br>On reset you will gain ' + format(game.diamonds.onReset) + ' Diamonds';
+
+
 }, 40);
+
+function du1(){
+    document.getElementById('effectText').innerHTML = 'Lower the Coin Upgrades cost increase<br> Cost: ' + format(game.diamondUpgrades[0].cost) + ' Diamonds';
+};
+
+function du2(){
+    document.getElementById('effectText').innerHTML = 'Coin Upgrade 6 produces double<br> Cost: ' + format(game.diamondUpgrades[1].cost) + ' Diamonds';
+};
+
+
+function du3(){
+    document.getElementById('effectText').innerHTML = 'Improve Diamond gain formula<br> Cost: ' + format(game.diamondUpgrades[2].cost) + ' Diamonds';
+};
+
 
 
 function productionLoop(){
@@ -47,18 +71,20 @@ function productionLoop(){
     game.coinUpgrades[1].amount = game.coinUpgrades[1].amount + game.coinUpgrades[2].amount;
     game.coinUpgrades[2].amount = game.coinUpgrades[2].amount + game.coinUpgrades[3].amount;
     game.coinUpgrades[3].amount = game.coinUpgrades[3].amount + game.coinUpgrades[4].amount;
-    game.coinUpgrades[4].amount = game.coinUpgrades[4].amount + game.coinUpgrades[5].amount;
+    game.coinUpgrades[4].amount = game.coinUpgrades[4].amount + game.coinUpgrades[5].amount * game.diamondUpgrades[1].effect;
 
 
     if (game.coins > game.diamonds.coinsNeeded) {
         game.diamonds.onReset = game.diamonds.onReset + 1;
-        game.diamonds.coinsNeeded = game.diamonds.coinsNeeded * 3.5;
+        game.diamonds.coinsNeeded = game.diamonds.coinsNeeded * (game.diamonds.increase - game.diamondUpgrades[2].effect);
         
     }
 
 }
 
-setInterval(productionLoop, 40);
+// GAME TIME 
+
+setInterval(productionLoop, 1000);
 
 // FORMATING NUMBERS
 
@@ -102,7 +128,7 @@ function buyUpgrade1(){
         game.coins = game.coins - game.coinUpgrades[0].cost;
         game.coinUpgrades[0].amount++;
         game.coinUpgrades[0].bought++;
-        game.coinUpgrades[0].cost = game.coinUpgrades[0].cost * 1.3;
+        game.coinUpgrades[0].cost = game.coinUpgrades[0].cost * game.costIncrease;
     }
 
 }
@@ -113,7 +139,7 @@ function buyUpgrade2(){
         game.coins = game.coins - game.coinUpgrades[1].cost;
         game.coinUpgrades[1].amount++;
         game.coinUpgrades[1].bought++;
-        game.coinUpgrades[1].cost = game.coinUpgrades[1].cost * 1.4;
+        game.coinUpgrades[1].cost = game.coinUpgrades[1].cost * (game.costIncrease + 0.1);
     }
 
 }
@@ -124,7 +150,7 @@ function buyUpgrade3(){
         game.coins = game.coins - game.coinUpgrades[2].cost;
         game.coinUpgrades[2].amount++;
         game.coinUpgrades[2].bought++;
-        game.coinUpgrades[2].cost = game.coinUpgrades[2].cost * 1.5;
+        game.coinUpgrades[2].cost = game.coinUpgrades[2].cost * (game.costIncrease + 0.2);
     }
 
 }
@@ -135,7 +161,7 @@ function buyUpgrade4(){
         game.coins = game.coins - game.coinUpgrades[3].cost;
         game.coinUpgrades[3].amount++;
         game.coinUpgrades[3].bought++;
-        game.coinUpgrades[3].cost = game.coinUpgrades[3].cost * 1.6;
+        game.coinUpgrades[3].cost = game.coinUpgrades[3].cost *(game.costIncrease + 0.3);
     }
 
 }
@@ -146,7 +172,7 @@ function buyUpgrade5(){
         game.coins = game.coins - game.coinUpgrades[4].cost;
         game.coinUpgrades[4].amount++;
         game.coinUpgrades[4].bought++;
-        game.coinUpgrades[4].cost = game.coinUpgrades[4].cost * 1.7;
+        game.coinUpgrades[4].cost = game.coinUpgrades[4].cost *(game.costIncrease + 0.4);
     }
 
 }
@@ -157,7 +183,7 @@ function buyUpgrade6(){
         game.coins = game.coins - game.coinUpgrades[5].cost;
         game.coinUpgrades[5].amount++;
         game.coinUpgrades[5].bought++;
-        game.coinUpgrades[5].cost = game.coinUpgrades[5].cost * 1.8;
+        game.coinUpgrades[5].cost = game.coinUpgrades[5].cost * (game.costIncrease + 0.5);
     }
 
 }
@@ -195,4 +221,43 @@ function reset(){
     game.coinUpgrades[4].cost = 100000;
     game.coinUpgrades[5].cost = 1000000;
     }
+}
+
+// DIAMOND UPGRADES
+
+function buyDU1(){
+
+    if ( game.diamonds.amount >= game.diamondUpgrades[0].cost && game.diamondUpgrades[0].bought == false ) {
+        game.diamonds.amount = game.diamonds.amount - game.diamondUpgrades[0].cost;
+        game.diamondUpgrades[0].bought = true;
+
+        //EFFECT
+        game.costIncrease = game.costIncrease - game.diamondUpgrades[0].effect;
+
+    }
+
+}
+
+function buyDU2(){
+
+    if ( game.diamonds.amount >= game.diamondUpgrades[1].cost && game.diamondUpgrades[1].bought == false ) {
+        game.diamonds.amount = game.diamonds.amount - game.diamondUpgrades[1].cost;
+        game.diamondUpgrades[1].bought = true;
+
+        //EFFECT
+        game.diamondUpgrades[1].effect = 2;
+    }
+
+}
+
+function buyDU3(){
+
+    if ( game.diamonds.amount >= game.diamondUpgrades[2].cost && game.diamondUpgrades[2].bought == false ) {
+        game.diamonds.amount = game.diamonds.amount - game.diamondUpgrades[2].cost;
+        game.diamondUpgrades[2].bought = true;
+
+        //EFFECT
+        game.diamondUpgrades[2].effect = 0.3;
+    }
+
 }

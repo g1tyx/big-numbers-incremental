@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Big Numbers Incremental</title>
+    <title>bigNumbersIncremental</title>
 </head>
 <body>
     <div id="resources">
@@ -44,6 +44,19 @@
 
             <div id="resetButton" class="buttonHover" onclick="reset()">Diamonds whatever</div>
 
+            <p class="diamondUpgradesText">Diamond Upgrades</p>
+
+            <div id="diamondUpgrades">
+
+                <div class="diamondUpgrade1 buttonHover dU" onmouseover="du1()" onclick="buyDU1()">1</div>
+                <div class="diamondUpgrade2 buttonHover dU" onmouseover="du2()" onclick="buyDU2()">2</div>
+                <div class="diamondUpgrade3 buttonHover dU" onmouseover="du3()" onclick="buyDU3()">3</div>
+
+
+            </div>
+
+            <p class="diamondUpgradesEffects diamondUpgradesText" id="effectText"></p>
+
         </div>
 
         <div id="legacyTab" data-tab-content>
@@ -58,10 +71,9 @@
             </div>
 
             <div id="patchNotes">
-                Version 0.1.1 (8th of August 2023)<Br>
+                Version 0.1.2 (8th of August 2023)<Br>
                     <ul>
-                        <li>Added the posibility to Reset for Diamonds</li>
-                        <li>Improved visuals a little bit</li>
+                        <li>Added 3 DIAMOND UPGRADES</li>
                     </ul>
                     
             </div>

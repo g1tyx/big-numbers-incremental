@@ -76,3 +76,24 @@
     text-align: center;
     cursor: pointer;
 }
+
+#diamondUpgrades{
+    display: flex;
+    gap: 100px;
+    margin: auto;
+    width: 600px;
+    font-size: 30px;
+    padding: 30px;
+}
+
+.dU{
+    width: 600px;
+    text-align: center;
+    border: 1px black solid;
+    padding: 10px;
+}
+
+.diamondUpgradesText{
+    text-align: center;
+    padding: 30px;
+}
