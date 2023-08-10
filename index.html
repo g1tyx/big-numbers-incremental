@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Big Numbers Incremental</title>
+</head>
+<body>
+    <div id="resources">
+        <ul id="resourcesList">
+            <li id="coinsAmount">Coins: 0</li>
+            <li id="diamondsAmount">Diamonds: 0</li>
+        </ul>
+    </div>
+    <hr>
+
+    <div>
+        <ul class="tabs">
+            <li data-tab-target="#coinsTab" class="active tab"><b>Coins</b></li>
+            <li data-tab-target="#diamondsTab" class="tab"><b>Diamonds</b></li>
+            <li data-tab-target="#legacyTab" class="tab"><b>Legacy</b></li>
+            <li data-tab-target="#optionsTab" class="tab"><b>Options</b></li>
+        </ul>
+    </div>
+
+    <div id="tab-content">
+
+        <div id="coinsTab" data-tab-content class="active">
+            <div id="coinUpgrades">
+                <div onclick="buyUpgrade1()" id="coinUpgrade1">Upgrade 1</div>
+                <div onclick="buyUpgrade2()" id="coinUpgrade2">Upgrade 2</div>
+                <div onclick="buyUpgrade3()" id="coinUpgrade3">Upgrade 3</div>
+                <div onclick="buyUpgrade4()" id="coinUpgrade4">Upgrade 1</div>
+                <div onclick="buyUpgrade5()" id="coinUpgrade5">Upgrade 2</div>
+                <div onclick="buyUpgrade6()" id="coinUpgrade6">Upgrade 3</div>
+
+            </div>
+        </div>
+
+        <div id="diamondsTab" data-tab-content>
+            Coming really soon!!!! 1.00e15 Coins !
+        </div>
+
+        <div id="legacyTab" data-tab-content>
+            Coming soon!!!!
+        </div>
+
+        <div id="optionsTab" data-tab-content>
+
+            <div id="savingloading">
+                <button id="saveButton" onclick="saveGame()">Save</button>
+                <button id="loadButton" onclick="loadGame()">Load</button>
+            </div>
+
+            <div id="patchNotes">
+                Version 0.1
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
