@@ -3,6 +3,7 @@
     padding: 0px;
     margin: 0px;
     user-select: none;
+    border-radius: 5px;
 }
 
 #resourcesList{
@@ -43,7 +44,7 @@
 
 }
 
-.tab:hover, #coinUpgrade1:hover, #coinUpgrade2:hover, #coinUpgrade3:hover, #coinUpgrade4:hover, #coinUpgrade5:hover, #coinUpgrade6:hover{
+.tab:hover, .buttonHover:hover{
     background-color: rgb(0, 0, 0);
     color: white;
     transition: 200ms;
@@ -61,5 +62,17 @@
     padding-left: 15px;
     padding-right: 15px;
     margin: 20px auto;
+    cursor: pointer;
+}
+
+#resetButton{
+    border: black 1px solid;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 40%;
+    margin: 40px auto;
+    text-align: center;
     cursor: pointer;
 }

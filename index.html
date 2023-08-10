@@ -24,22 +24,26 @@
         </ul>
     </div>
 
+    <hr>
+
     <div id="tab-content">
 
         <div id="coinsTab" data-tab-content class="active">
             <div id="coinUpgrades">
-                <div onclick="buyUpgrade1()" id="coinUpgrade1">Upgrade 1</div>
-                <div onclick="buyUpgrade2()" id="coinUpgrade2">Upgrade 2</div>
-                <div onclick="buyUpgrade3()" id="coinUpgrade3">Upgrade 3</div>
-                <div onclick="buyUpgrade4()" id="coinUpgrade4">Upgrade 1</div>
-                <div onclick="buyUpgrade5()" id="coinUpgrade5">Upgrade 2</div>
-                <div onclick="buyUpgrade6()" id="coinUpgrade6">Upgrade 3</div>
+                <div onclick="buyUpgrade1()" id="coinUpgrade1" class="buttonHover">Upgrade 1</div>
+                <div onclick="buyUpgrade2()" id="coinUpgrade2" class="buttonHover">Upgrade 2</div>
+                <div onclick="buyUpgrade3()" id="coinUpgrade3" class="buttonHover">Upgrade 3</div>
+                <div onclick="buyUpgrade4()" id="coinUpgrade4" class="buttonHover">Upgrade 1</div>
+                <div onclick="buyUpgrade5()" id="coinUpgrade5" class="buttonHover">Upgrade 2</div>
+                <div onclick="buyUpgrade6()" id="coinUpgrade6" class="buttonHover">Upgrade 3</div>
 
             </div>
         </div>
 
         <div id="diamondsTab" data-tab-content>
-            Coming really soon!!!! 1.00e15 Coins !
+
+            <div id="resetButton" class="buttonHover" onclick="reset()">Diamonds whatever</div>
+
         </div>
 
         <div id="legacyTab" data-tab-content>
@@ -49,12 +53,17 @@
         <div id="optionsTab" data-tab-content>
 
             <div id="savingloading">
-                <button id="saveButton" onclick="saveGame()">Save</button>
-                <button id="loadButton" onclick="loadGame()">Load</button>
+                <button id="saveButton" class="buttonHover" onclick="saveGame()">Save</button>
+                <button id="loadButton" class="buttonHover" onclick="loadGame()">Load</button>
             </div>
 
             <div id="patchNotes">
-                Version 0.1
+                Version 0.1.1 (8th of August 2023)<Br>
+                    <ul>
+                        <li>Added the posibility to Reset for Diamonds</li>
+                        <li>Improved visuals a little bit</li>
+                    </ul>
+                    
             </div>
 
         </div>

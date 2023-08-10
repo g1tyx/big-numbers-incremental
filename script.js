@@ -2,7 +2,12 @@
 
 game = {
     coins : 10,
-    diamonds: 0,
+
+    diamonds: {
+        amount: 0,
+        onReset: 0,
+        coinsNeeded: 10000000000000,
+    },
 
     // COIN UPGRADES
 
@@ -22,7 +27,7 @@ setInterval(function setText() {
 
     // RESOURCES
     document.getElementById('coinsAmount').innerHTML = 'Coins: ' + format(game.coins);
-    document.getElementById('diamondsAmount').innerHTML = 'Diamonds: ' + format(game.diamonds);
+    document.getElementById('diamondsAmount').innerHTML = 'Diamonds: ' + format(game.diamonds.amount);
 
     // COIN UPGRADES
     document.getElementById('coinUpgrade1').innerHTML = '<b>Coin Upgrade 1</b><br> Amount: ' + format(game.coinUpgrades[0].amount) + '<br>Bought: ' + format(game.coinUpgrades[0].bought) + '<br>Cost: ' + format(game.coinUpgrades[0].cost) + ' Coins';
@@ -31,6 +36,8 @@ setInterval(function setText() {
     document.getElementById('coinUpgrade4').innerHTML = '<b>Coin Upgrade 4</b><br> Amount: ' + format(game.coinUpgrades[3].amount) + '<br>Bought: ' + format(game.coinUpgrades[3].bought) + '<br>Cost: ' + format(game.coinUpgrades[3].cost) + ' Coins';
     document.getElementById('coinUpgrade5').innerHTML = '<b>Coin Upgrade 5</b><br> Amount: ' + format(game.coinUpgrades[4].amount) + '<br>Bought: ' + format(game.coinUpgrades[4].bought) + '<br>Cost: ' + format(game.coinUpgrades[4].cost)+ ' Coins';
     document.getElementById('coinUpgrade6').innerHTML = '<b>Coin Upgrade 6</b><br> Amount: ' + format(game.coinUpgrades[5].amount) + '<br>Bought: ' + format(game.coinUpgrades[5].bought) + '<br>Cost: ' + format(game.coinUpgrades[5].cost)+ ' Coins';
+
+    document.getElementById('resetButton').innerHTML = 'Reset Coins and Coin Upgrades to get Diamonds<br>You need 1.00e13 Diamonds to Reset<br>On reset you will gain ' + format(game.diamonds.onReset) + ' Diamonds'
 }, 40);
 
 
@@ -41,8 +48,17 @@ function productionLoop(){
     game.coinUpgrades[2].amount = game.coinUpgrades[2].amount + game.coinUpgrades[3].amount;
     game.coinUpgrades[3].amount = game.coinUpgrades[3].amount + game.coinUpgrades[4].amount;
     game.coinUpgrades[4].amount = game.coinUpgrades[4].amount + game.coinUpgrades[5].amount;
+
+
+    if (game.coins > game.diamonds.coinsNeeded) {
+        game.diamonds.onReset = game.diamonds.onReset + 1;
+        game.diamonds.coinsNeeded = game.diamonds.coinsNeeded * 3.5;
+        
+    }
+
 }
-setInterval(productionLoop, 1000);
+
+setInterval(productionLoop, 40);
 
 // FORMATING NUMBERS
 
@@ -144,4 +160,39 @@ function buyUpgrade6(){
         game.coinUpgrades[5].cost = game.coinUpgrades[5].cost * 1.8;
     }
 
+}
+
+function reset(){
+
+    if ( game.coins >= 10000000000000 ) {
+    game.diamonds.amount = game.diamonds.amount + game.diamonds.onReset;
+    game.diamonds.onReset = 0;
+    game.diamonds.coinsNeeded = 10000000000000;
+
+    game.coins = 10;
+    game.coinUpgrades[0].amount = 0;
+    game.coinUpgrades[0].bought = 0;
+
+    game.coinUpgrades[1].amount = 0;
+    game.coinUpgrades[1].bought = 0;
+
+    game.coinUpgrades[2].amount = 0;
+    game.coinUpgrades[2].bought = 0;
+
+    game.coinUpgrades[3].amount = 0;
+    game.coinUpgrades[3].bought = 0;
+
+    game.coinUpgrades[4].amount = 0;
+    game.coinUpgrades[4].bought = 0;
+
+    game.coinUpgrades[5].amount = 0;
+    game.coinUpgrades[5].bought = 0;
+
+    game.coinUpgrades[0].cost = 10;
+    game.coinUpgrades[1].cost = 100;
+    game.coinUpgrades[2].cost = 1000;
+    game.coinUpgrades[3].cost = 10000;
+    game.coinUpgrades[4].cost = 100000;
+    game.coinUpgrades[5].cost = 1000000;
+    }
 }
