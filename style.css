@@ -39,8 +39,8 @@
     border: 1px solid black;
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
 
 }
 
@@ -91,9 +91,49 @@
     text-align: center;
     border: 1px black solid;
     padding: 10px;
+    cursor: pointer;
 }
 
 .diamondUpgradesText{
     text-align: center;
-    padding: 30px;
+    padding: 20px;
+    padding-top: 1px;
 }
+
+#pGen1, #pGen2, #pGen3{
+    width : 90%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px black solid;
+    margin: 10px auto;
+}
+
+#pGen1Cost, #pGen2Cost, #pGen3Cost{
+    border: 1px black solid;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 40%;
+    align-items: center;
+  }
+  
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+  }
+  
+.icons{
+    max-width: 25px;
+    max-height: 25px;
+} 

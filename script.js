@@ -14,19 +14,37 @@ game = {
     // COIN UPGRADES
 
     coinUpgrades : [
-        {cost: 10, amount: 0, bought: 0},
-        {cost: 100, amount: 0, bought: 0},
-        {cost: 10000, amount: 0, bought: 0},
-        {cost: 100000, amount: 0, bought: 0},
-        {cost: 1000000, amount: 0, bought: 0},
-        {cost: 10000000, amount: 0, bought: 0},
+        {auto: false, cost: 10, amount: 0, bought: 0},
+        {auto: false, cost: 100, amount: 0, bought: 0},
+        {auto: false, cost: 10000, amount: 0, bought: 0},
+        {auto: false, cost: 100000, amount: 0, bought: 0},
+        {auto: false, cost: 1000000, amount: 0, bought: 0},
+        {auto: false, cost: 10000000, amount: 0, bought: 0},
       ],
+
+      // DIAMOND UPGRADES
 
     diamondUpgrades : [
         {cost: 1, bought: false, effect: 0.1},
         {cost: 5, bought: false, effect: 1},
         {cost: 20, bought: false, effect: 0},
-      ]
+      ],
+
+      // DIAMOND POWER
+
+    power : {
+        powerUpgrades : [
+            { auto: false, cost: 10, amount: 0, bought: 0},
+            { auto: false, cost: 100, amount: 0, bought: 0},
+            { auto: false, cost: 1000, amount: 0, bought: 0}
+        ],
+
+        amount: 0,
+    },
+
+    rubies: {
+        amount: 0,
+    }
 }
 
 
@@ -34,8 +52,10 @@ game = {
 setInterval(function setText() {
 
     // RESOURCES
-    document.getElementById('coinsAmount').innerHTML = 'Coins: ' + format(game.coins);
-    document.getElementById('diamondsAmount').innerHTML = 'Diamonds: ' + format(game.diamonds.amount);
+    document.getElementById('coinsAmount').innerHTML = '<img src="img/coins.png" class="icons"> Coins: ' + format(game.coins);
+    document.getElementById('diamondsAmount').innerHTML = '<img src="img/expense.png" class="icons"> Diamonds: ' + format(game.diamonds.amount);
+    document.getElementById('powerAmount').innerHTML = '<img src="img/power.png" class="icons"> Power: ' + format(game.power.amount);
+    document.getElementById('rubiesAmount').innerHTML = '<img src="img/ruby.png" class="icons"> Rubies: ' + format(game.rubies.amount) + ' (not obtainable)';
 
     // COIN UPGRADES
     document.getElementById('coinUpgrade1').innerHTML = '<b>Coin Upgrade 1</b><br> Amount: ' + format(game.coinUpgrades[0].amount) + '<br>Bought: ' + format(game.coinUpgrades[0].bought) + '<br>Cost: ' + format(game.coinUpgrades[0].cost) + ' Coins';
@@ -48,25 +68,54 @@ setInterval(function setText() {
     document.getElementById('resetButton').innerHTML = 'Reset Coins and Coin Upgrades to get Diamonds<br>You need 1.00e13 Diamonds to Reset<br>On reset you will gain ' + format(game.diamonds.onReset) + ' Diamonds';
 
 
+    // POWER GENERATORS
+    document.getElementById('pGen1Amount').innerHTML = 'Amount: ' + format(game.power.powerUpgrades[0].amount);
+    document.getElementById('pGen1Cost').innerHTML = 'Cost: ' + format(game.power.powerUpgrades[0].cost) + ' Diamonds';
+
+    document.getElementById('pGen2Amount').innerHTML ='Amount: ' + format(game.power.powerUpgrades[1].amount);
+    document.getElementById('pGen2Cost').innerHTML = 'Cost: ' + format(game.power.powerUpgrades[1].cost) + ' Diamonds';
+
+    document.getElementById('pGen3Amount').innerHTML = 'Amount: ' +format(game.power.powerUpgrades[2].amount);
+    document.getElementById('pGen3Cost').innerHTML = 'Cost: ' + format(game.power.powerUpgrades[2].cost) + ' Diamonds';
+
+
+
 }, 40);
 
 function du1(){
-    document.getElementById('effectText').innerHTML = 'Lower the Coin Upgrades cost increase<br> Cost: ' + format(game.diamondUpgrades[0].cost) + ' Diamonds';
+    if (game.diamondUpgrades[0].bought == true) {
+        document.getElementById('effectText').innerHTML = 'Lower the Coin Upgrades cost increase<br> Bought';
+    } else {
+        document.getElementById('effectText').innerHTML = 'Lower the Coin Upgrades cost increase<br> Cost: ' + format(game.diamondUpgrades[0].cost) + ' Diamonds';
+    }
 };
 
 function du2(){
-    document.getElementById('effectText').innerHTML = 'Coin Upgrade 6 produces double<br> Cost: ' + format(game.diamondUpgrades[1].cost) + ' Diamonds';
+    if (game.diamondUpgrades[1].bought == true) {
+        document.getElementById('effectText').innerHTML = 'Coin Upgrade 6 produces double<br> Bought';
+
+    } else {
+        document.getElementById('effectText').innerHTML = 'Coin Upgrade 6 produces double<br> Cost: ' + format(game.diamondUpgrades[1].cost) + ' Diamonds';
+
+    }
 };
 
 
 function du3(){
-    document.getElementById('effectText').innerHTML = 'Improve Diamond gain formula<br> Cost: ' + format(game.diamondUpgrades[2].cost) + ' Diamonds';
+
+    if (game.diamondUpgrades[2].bought == true) {
+        document.getElementById('effectText').innerHTML = 'Improve Diamond gain formula<br> Bought';
+
+    } else {
+        document.getElementById('effectText').innerHTML = 'Improve Diamond gain formula<br> Cost: ' + format(game.diamondUpgrades[2].cost) + ' Diamonds';
+
+    }
 };
 
 
 
 function productionLoop(){
-    game.coins = game.coins + game.coinUpgrades[0].amount;
+    game.coins = Math.pow(game.coins + game.coinUpgrades[0].amount, (game.power.amount/1000)+1)
     game.coinUpgrades[0].amount = game.coinUpgrades[0].amount + game.coinUpgrades[1].amount;
     game.coinUpgrades[1].amount = game.coinUpgrades[1].amount + game.coinUpgrades[2].amount;
     game.coinUpgrades[2].amount = game.coinUpgrades[2].amount + game.coinUpgrades[3].amount;
@@ -79,6 +128,10 @@ function productionLoop(){
         game.diamonds.coinsNeeded = game.diamonds.coinsNeeded * (game.diamonds.increase - game.diamondUpgrades[2].effect);
         
     }
+
+    game.power.amount = game.power.amount + (game.power.powerUpgrades[0].amount / 100);
+    game.power.powerUpgrades[0].amount = game.power.powerUpgrades[0].amount + (game.power.powerUpgrades[1].amount / 100);
+    game.power.powerUpgrades[1].amount = game.power.powerUpgrades[1].amount + (game.power.powerUpgrades[2].amount / 100);
 
 }
 
@@ -260,4 +313,33 @@ function buyDU3(){
         game.diamondUpgrades[2].effect = 0.3;
     }
 
+}
+
+// BUY POWER UPGRADES
+
+function buyPU1(){
+    if ( game.diamonds.amount >= game.power.powerUpgrades[0].cost ) {
+        game.diamonds.amount = game.diamonds.amount - game.power.powerUpgrades[0].cost;
+        game.power.powerUpgrades[0].amount = game.power.powerUpgrades[0].amount + 1;
+        game.power.powerUpgrades[0].bought = game.power.powerUpgrades[0].bought + 1;
+        game.power.powerUpgrades[0].cost = game.power.powerUpgrades[0].cost * 2.2;
+    }
+}
+
+function buyPU2(){
+    if ( game.diamonds.amount >= game.power.powerUpgrades[1].cost ) {
+        game.diamonds.amount = game.diamonds.amount - game.power.powerUpgrades[1].cost;
+        game.power.powerUpgrades[1].amount = game.power.powerUpgrades[1].amount + 1;
+        game.power.powerUpgrades[1].bought = game.power.powerUpgrades[1].bought + 1;
+        game.power.powerUpgrades[1].cost = game.power.powerUpgrades[1].cost * 2.2;
+    }
+}
+
+function buyPU3(){
+    if ( game.diamonds.amount >= game.power.powerUpgrades[2].cost ) {
+        game.diamonds.amount = game.diamonds.amount - game.power.powerUpgrades[2].cost;
+        game.power.powerUpgrades[2].amount = game.power.powerUpgrades[2].amount + 1;
+        game.power.powerUpgrades[2].bought = game.power.powerUpgrades[2].bought + 1;
+        game.power.powerUpgrades[2].cost = game.power.powerUpgrades[2].cost * 2.2;
+    }
 }

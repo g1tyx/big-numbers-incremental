@@ -5,12 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>bigNumbersIncremental</title>
+    <link rel="shortcut icon" href="img/expense.png" type="image/x-icon">
 </head>
 <body>
     <div id="resources">
         <ul id="resourcesList">
-            <li id="coinsAmount">Coins: 0</li>
-            <li id="diamondsAmount">Diamonds: 0</li>
+            <div class="row">
+                <div class="column">            
+                    <li id="coinsAmount">Coins: 0</li>
+                    <li id="diamondsAmount">Diamonds: 0</li>
+                </div>
+                <div class="column">
+                    <li id="powerAmount">Power: 0</li>
+                    <li id="rubiesAmount">Rubies: 0</li>
+                </div>
+            </div>
         </ul>
     </div>
     <hr>
@@ -19,7 +28,7 @@
         <ul class="tabs">
             <li data-tab-target="#coinsTab" class="active tab"><b>Coins</b></li>
             <li data-tab-target="#diamondsTab" class="tab"><b>Diamonds</b></li>
-            <li data-tab-target="#legacyTab" class="tab"><b>Legacy</b></li>
+            <li data-tab-target="#rubiesTab" class="tab"><b>Rubies</b></li>
             <li data-tab-target="#optionsTab" class="tab"><b>Options</b></li>
         </ul>
     </div>
@@ -57,10 +66,40 @@
 
             <p class="diamondUpgradesEffects diamondUpgradesText" id="effectText"></p>
 
+            <p class="diamondUpgradesText"><b>Power Generators</b></p>
+
+            <div id="powerGenerators">
+
+                <div id="pGen1">
+
+                    <div id="pGen1Text">Power Generator 1</div>
+                    <div id="pGen1Amount">0.00</div>
+                    <div id="pGen1Cost" class="buttonHover" onclick="buyPU1()">100 Diamonds</div>
+
+                </div>
+
+                <div id="pGen2">
+
+                    <div id="pGen2Text">Power Generator 2</div>
+                    <div id="pGen2Amount">0.00</div>
+                    <div id="pGen2Cost" class="buttonHover" onclick="buyPU2()">1000 Diamonds</div>
+
+                </div>
+
+                <div id="pGen3">
+
+                    <div id="pGen3Text">Power Generator 3</div>
+                    <div id="pGen3Amount">0.00</div>
+                    <div id="pGen3Cost" class="buttonHover" onclick="buyPU3()">10000 Diamonds</div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div id="legacyTab" data-tab-content>
-            Coming soon!!!!
+        <div id="rubiesTab" data-tab-content>
+            Coming VERY  VERY VERY VERY SOON!!!!
         </div>
 
         <div id="optionsTab" data-tab-content>
@@ -71,9 +110,18 @@
             </div>
 
             <div id="patchNotes">
-                Version 0.1.2 (8th of August 2023)<Br>
+                <img src="img/game.png" width="640" height="480"><Br>
+                <b>Version 0.2 (11th of August 2023)</b><Br>
                     <ul>
-                        <li>Added 3 DIAMOND UPGRADES</li>
+                        <li>NEW MECHANIC! POWER GENERATORS</li>
+                        <li>NEW RESOURCE! POWER, which gives a small exponent to Coin gain</li>
+<li></li>
+                        <li>Added favicon (might be changed later)</li>
+                        <li>Added text that says if you bought a Diamond Upgrade</li>
+                        <li>Renamed Legacy tab to "Rubies"</li>
+                        <li>Added new resource, "Rubies" (you can't get it now, it will be in the next update)</li>
+                        <li></li>
+                        <li>Added new icons for resources (will be improved later on)</li>
                     </ul>
                     
             </div>
@@ -82,6 +130,6 @@
 
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
