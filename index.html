@@ -19,6 +19,10 @@
                     <li id="powerAmount">Power: 0</li>
                     <li id="rubiesAmount">Rubies: 0</li>
                 </div>
+
+                <div class="column">
+                    <li id="ticksAmount">Ticks: 1000.00</li>
+                </div>
             </div>
         </ul>
     </div>
@@ -38,6 +42,11 @@
     <div id="tab-content">
 
         <div id="coinsTab" data-tab-content class="active">
+
+            <div id="autoBuyButton" class="autoBuyNotBought buttonHover" onclick="switchAutoBuy()">
+                AutoBuy: OFF
+            </div>
+
             <div id="coinUpgrades">
                 <div onclick="buyUpgrade1()" id="coinUpgrade1" class="buttonHover">Upgrade 1</div>
                 <div onclick="buyUpgrade2()" id="coinUpgrade2" class="buttonHover">Upgrade 2</div>
@@ -60,7 +69,7 @@
                 <div class="diamondUpgrade1 buttonHover dU" onmouseover="du1()" onclick="buyDU1()">1</div>
                 <div class="diamondUpgrade2 buttonHover dU" onmouseover="du2()" onclick="buyDU2()">2</div>
                 <div class="diamondUpgrade3 buttonHover dU" onmouseover="du3()" onclick="buyDU3()">3</div>
-
+                <div class="diamondUpgrade4 buttonHover dU" onmouseover="du4()" onclick="buyDU4()">4</div>
 
             </div>
 
@@ -99,7 +108,12 @@
         </div>
 
         <div id="rubiesTab" data-tab-content>
-            Coming VERY  VERY VERY VERY SOON!!!!
+
+            <div id="prestigeButton" class="buttonHover" onclick="prestige()">Rubies Whatever</div>
+
+            <div id="ticksUpgradeButton" class="buttonHover" onclick="ticksUpgrade()">Ticks Whatever</div>
+
+
         </div>
 
         <div id="optionsTab" data-tab-content>
@@ -111,17 +125,13 @@
 
             <div id="patchNotes">
                 <img src="img/game.png" width="640" height="480"><Br>
-                <b>Version 0.2 (11th of August 2023)</b><Br>
+                <b>Version 0.3 (11th of August 2023)</b><Br>
                     <ul>
-                        <li>NEW MECHANIC! POWER GENERATORS</li>
-                        <li>NEW RESOURCE! POWER, which gives a small exponent to Coin gain</li>
-<li></li>
-                        <li>Added favicon (might be changed later)</li>
-                        <li>Added text that says if you bought a Diamond Upgrade</li>
-                        <li>Renamed Legacy tab to "Rubies"</li>
-                        <li>Added new resource, "Rubies" (you can't get it now, it will be in the next update)</li>
+                        <li>New Resource (for real) - RUBIES</li>
+                        <li>NEW DIAMOND UPGRADE</li>
                         <li></li>
-                        <li>Added new icons for resources (will be improved later on)</li>
+                        <li>Fixed an issue where the Power effect was not applied properly</li>
+                        <li>Fixed an issue where the AutoBuy button didn't save</li>
                     </ul>
                     
             </div>
@@ -130,6 +140,7 @@
 
     </div>
 
-    <script src="script.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/breakInfinity.js" defer></script>
 </body>
 </html>

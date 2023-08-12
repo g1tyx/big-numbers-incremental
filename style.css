@@ -65,7 +65,7 @@
     cursor: pointer;
 }
 
-#resetButton{
+#resetButton, #prestigeButton{
     border: black 1px solid;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -137,3 +137,25 @@
     max-width: 25px;
     max-height: 25px;
 } 
+
+.autoBuyNotBought{
+    display: none;
+}
+
+#autoBuyButton{
+    margin: auto;
+    border: solid 1px black;
+    width: 10%;
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#ticksUpgradeButton{
+    text-align: center;
+    border: solid 1px black;
+    padding: 20px;
+    width: 20%;
+    margin: auto;
+    cursor: pointer;
+}
