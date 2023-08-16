@@ -6,6 +6,11 @@
     border-radius: 5px;
 }
 
+body{
+    background-color: rgb(20, 20, 20);
+    color: white;
+}
+
 #resourcesList{
     list-style: none;
     padding: 20px;
@@ -36,7 +41,8 @@
 
 .tab{
     cursor: pointer;
-    border: 1px solid black;
+    background-color: black;
+    border: 1px solid rgb(255, 255, 255);
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 40px;
@@ -45,8 +51,8 @@
 }
 
 .tab:hover, .buttonHover:hover{
-    background-color: rgb(0, 0, 0);
-    color: white;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     transition: 200ms;
 }
 
@@ -54,8 +60,8 @@
     text-align: center;
 }
 
-#coinUpgrade1, #coinUpgrade2, #coinUpgrade3, #coinUpgrade4, #coinUpgrade5, #coinUpgrade6{
-    border: black 1px solid;
+.coinUpgrade{
+    border: rgb(255, 255, 255) 1px solid;
     width: 30%;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -63,10 +69,33 @@
     padding-right: 15px;
     margin: 20px auto;
     cursor: pointer;
+    color:yellow;
+    background-color: black;
 }
 
-#resetButton, #prestigeButton{
-    border: black 1px solid;
+#resetButton{
+    background-color: black;
+    color: rgb(0, 153, 255);
+    border: rgb(255, 255, 255) 1px solid;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 40%;
+    margin: 40px auto;
+    text-align: center;
+    cursor: pointer;
+}
+
+#resetButton:hover, #prestigeButton:hover{
+    transition: 200ms;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0)
+}
+
+#prestigeButton{
+    background-color: black;
+    border: rgb(255, 255, 255) 1px solid;
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 15px;
@@ -84,14 +113,16 @@
     width: 600px;
     font-size: 30px;
     padding: 30px;
+    color: rgb(0, 153, 255);
 }
 
 .dU{
     width: 600px;
     text-align: center;
-    border: 1px black solid;
+    border: 1px rgb(255, 255, 255) solid;
     padding: 10px;
     cursor: pointer;
+    background-color: black;
 }
 
 .diamondUpgradesText{
@@ -105,17 +136,18 @@
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    border: 1px black solid;
+    border: 1px rgb(255, 255, 255) solid;
     margin: 10px auto;
 }
 
-#pGen1Cost, #pGen2Cost, #pGen3Cost{
-    border: 1px black solid;
+.genBuy{
+    border: 1px rgb(255, 255, 255) solid;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
     cursor: pointer;
+    background-color: black;
 }
 
 .row {
@@ -136,6 +168,7 @@
 .icons{
     max-width: 25px;
     max-height: 25px;
+    align-items: center;
 } 
 
 .autoBuyNotBought{
@@ -144,7 +177,7 @@
 
 #autoBuyButton{
     margin: auto;
-    border: solid 1px black;
+    border: solid 1px rgb(255, 255, 255);
     width: 10%;
     text-align: center;
     margin-top: 20px;
@@ -152,10 +185,37 @@
 }
 
 #ticksUpgradeButton{
+    background-color: black;
     text-align: center;
-    border: solid 1px black;
+    border: solid 1px rgb(255, 255, 255);
     padding: 20px;
     width: 20%;
     margin: auto;
     cursor: pointer;
+}
+
+#ticksUpgradeButton:hover{
+    background-color: white;
+    color: black;
+}
+
+.yellowCoins{
+    color: yellow;
+}
+
+.blueDiamonds{
+    color: rgb(0, 153, 255);
+}
+
+.redRubies{
+    color: red;
+}
+
+.pinkTicks{
+    color: pink;
+}
+
+li{
+    display: flex;
+    align-items: center;
 }

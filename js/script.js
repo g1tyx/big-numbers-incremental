@@ -46,7 +46,7 @@ game = {
     rubies: {
         amount: 0,
         onPrestige: 1,
-        powerGen3Needed: 5,
+        powerGen3Needed: 2,
         timesPrestiged: 0,
     },
 
@@ -237,7 +237,12 @@ function buyUpgrade1(){
         game.coinUpgrades[0].amount++;
         game.coinUpgrades[0].bought++;
         game.coinUpgrades[0].cost = game.coinUpgrades[0].cost * game.costIncrease;
+
+        var element = document.getElementById('coinUpgrade2');
+        element.classList.remove('notVisible')
+    
     }
+
 
 }
 
@@ -248,7 +253,12 @@ function buyUpgrade2(){
         game.coinUpgrades[1].amount++;
         game.coinUpgrades[1].bought++;
         game.coinUpgrades[1].cost = game.coinUpgrades[1].cost * (game.costIncrease + 0.1);
+
+        var element = document.getElementById('coinUpgrade3');
+        element.classList.remove('notVisible')
+    
     }
+
 
 }
 
@@ -259,6 +269,11 @@ function buyUpgrade3(){
         game.coinUpgrades[2].amount++;
         game.coinUpgrades[2].bought++;
         game.coinUpgrades[2].cost = game.coinUpgrades[2].cost * (game.costIncrease + 0.2);
+
+
+        var element = document.getElementById('coinUpgrade4');
+        element.classList.remove('notVisible')
+    
     }
 
 }
@@ -270,6 +285,11 @@ function buyUpgrade4(){
         game.coinUpgrades[3].amount++;
         game.coinUpgrades[3].bought++;
         game.coinUpgrades[3].cost = game.coinUpgrades[3].cost *(game.costIncrease + 0.3);
+
+
+        var element = document.getElementById('coinUpgrade5');
+        element.classList.remove('notVisible')
+    
     }
 
 }
@@ -281,6 +301,11 @@ function buyUpgrade5(){
         game.coinUpgrades[4].amount++;
         game.coinUpgrades[4].bought++;
         game.coinUpgrades[4].cost = game.coinUpgrades[4].cost *(game.costIncrease + 0.4);
+
+
+        var element = document.getElementById('coinUpgrade6');
+        element.classList.remove('notVisible')
+    
     }
 
 }
@@ -292,9 +317,24 @@ function buyUpgrade6(){
         game.coinUpgrades[5].amount++;
         game.coinUpgrades[5].bought++;
         game.coinUpgrades[5].cost = game.coinUpgrades[5].cost * (game.costIncrease + 0.5);
+
+
+        if( game.coinUpgrades[5].amount >= 10){
+            var element = document.getElementById('diamondsTabButton');
+        element.classList.remove('notVisible')
+        }
+    
+        if( game.coinUpgrades[5].amount >= 10){
+            var element = document.getElementById('diamondsAmount');
+        element.classList.remove('notVisible')
+    
+    }
     }
 
 }
+
+
+
 
 function reset(){
 
@@ -328,6 +368,13 @@ function reset(){
     game.coinUpgrades[3].cost = 10000;
     game.coinUpgrades[4].cost = 100000;
     game.coinUpgrades[5].cost = 1000000;
+
+    var element = document.getElementById('diamondStuff');
+    element.classList.remove('notVisible')
+
+    var element = document.getElementById('powerAmount');
+    element.classList.remove('notVisible')
+
     }
 }
 
@@ -405,7 +452,18 @@ function buyPU3(){
         game.power.powerUpgrades[2].amount = game.power.powerUpgrades[2].amount + 1;
         game.power.powerUpgrades[2].bought = game.power.powerUpgrades[2].bought + 1;
         game.power.powerUpgrades[2].cost = game.power.powerUpgrades[2].cost * 2.2;
+    
+        var element = document.getElementById('rubiesTabButton');
+        element.classList.remove('notVisible')
+
+        var element = document.getElementById('rubiesAmount');
+        element.classList.remove('notVisible')
     }
+}
+
+if (game.power.powerUpgrades[2].bought >= 1){
+    var element = document.getElementById('rubiesAmount')
+    element.classList.remove('notVisible')
 }
 
 // AUTOBUY STUFF

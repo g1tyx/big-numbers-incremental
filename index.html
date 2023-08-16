@@ -12,16 +12,16 @@
         <ul id="resourcesList">
             <div class="row">
                 <div class="column">            
-                    <li id="coinsAmount">Coins: 0</li>
-                    <li id="diamondsAmount">Diamonds: 0</li>
+                    <li id="coinsAmount" class="yellowCoins">Coins: 0</li>
+                    <li id="diamondsAmount" class="blueDiamonds">Diamonds: 0</li>
                 </div>
                 <div class="column">
-                    <li id="powerAmount">Power: 0</li>
-                    <li id="rubiesAmount">Rubies: 0</li>
+                    <li id="powerAmount" class="blueDiamonds">Power: 0</li>
+                    <li id="rubiesAmount" class="redRubies">Rubies: 0</li>
                 </div>
 
                 <div class="column">
-                    <li id="ticksAmount">Ticks: 1000.00</li>
+                    <li id="ticksAmount" class="pinkTicks">Ticks: 1000.00</li>
                 </div>
             </div>
         </ul>
@@ -30,9 +30,9 @@
 
     <div>
         <ul class="tabs">
-            <li data-tab-target="#coinsTab" class="active tab"><b>Coins</b></li>
-            <li data-tab-target="#diamondsTab" class="tab"><b>Diamonds</b></li>
-            <li data-tab-target="#rubiesTab" class="tab"><b>Rubies</b></li>
+            <li data-tab-target="#coinsTab" class="active tab yellowCoins"><b>Coins</b></li>
+            <li data-tab-target="#diamondsTab" id="diamondsTabButton" class="tab blueDiamonds"><b>Diamonds</b></li>
+            <li data-tab-target="#rubiesTab" id="rubiesTabButton" class="tab redRubies"><b>Rubies</b></li>
             <li data-tab-target="#optionsTab" class="tab"><b>Options</b></li>
         </ul>
     </div>
@@ -48,12 +48,12 @@
             </div>
 
             <div id="coinUpgrades">
-                <div onclick="buyUpgrade1()" id="coinUpgrade1" class="buttonHover">Upgrade 1</div>
-                <div onclick="buyUpgrade2()" id="coinUpgrade2" class="buttonHover">Upgrade 2</div>
-                <div onclick="buyUpgrade3()" id="coinUpgrade3" class="buttonHover">Upgrade 3</div>
-                <div onclick="buyUpgrade4()" id="coinUpgrade4" class="buttonHover">Upgrade 1</div>
-                <div onclick="buyUpgrade5()" id="coinUpgrade5" class="buttonHover">Upgrade 2</div>
-                <div onclick="buyUpgrade6()" id="coinUpgrade6" class="buttonHover">Upgrade 3</div>
+                <div onclick="buyUpgrade1()" id="coinUpgrade1" class="buttonHover coinUpgrade">Upgrade 1</div>
+                <div onclick="buyUpgrade2()" id="coinUpgrade2" class="buttonHover coinUpgrade">Upgrade 2</div>
+                <div onclick="buyUpgrade3()" id="coinUpgrade3" class="buttonHover coinUpgrade">Upgrade 3</div>
+                <div onclick="buyUpgrade4()" id="coinUpgrade4" class="buttonHover coinUpgrade">Upgrade 1</div>
+                <div onclick="buyUpgrade5()" id="coinUpgrade5" class="buttonHover coinUpgrade">Upgrade 2</div>
+                <div onclick="buyUpgrade6()" id="coinUpgrade6" class="buttonHover coinUpgrade">Upgrade 3</div>
 
             </div>
         </div>
@@ -62,14 +62,15 @@
 
             <div id="resetButton" class="buttonHover" onclick="reset()">Diamonds whatever</div>
 
+                <div id="diamondStuff">
+
             <p class="diamondUpgradesText">Diamond Upgrades</p>
 
             <div id="diamondUpgrades">
-
-                <div class="diamondUpgrade1 buttonHover dU" onmouseover="du1()" onclick="buyDU1()">1</div>
-                <div class="diamondUpgrade2 buttonHover dU" onmouseover="du2()" onclick="buyDU2()">2</div>
-                <div class="diamondUpgrade3 buttonHover dU" onmouseover="du3()" onclick="buyDU3()">3</div>
-                <div class="diamondUpgrade4 buttonHover dU" onmouseover="du4()" onclick="buyDU4()">4</div>
+                <div id="diamondUpgradesButtons1" class="diamondUpgrade1 buttonHover dU" onmouseover="du1()" onclick="buyDU1()">1</div>
+                <div id="diamondUpgradesButtons2"class="diamondUpgrade2 buttonHover dU" onmouseover="du2()" onclick="buyDU2()">2</div>
+                <div id="diamondUpgradesButtons3"class="diamondUpgrade3 buttonHover dU" onmouseover="du3()" onclick="buyDU3()">3</div>
+                <div id="diamondUpgradesButtons4"class="diamondUpgrade4 buttonHover dU" onmouseover="du4()" onclick="buyDU4()">4</div>
 
             </div>
 
@@ -77,13 +78,13 @@
 
             <p class="diamondUpgradesText"><b>Power Generators</b></p>
 
-            <div id="powerGenerators">
+            <div id="powerGenerators" class="blueDiamonds">
 
                 <div id="pGen1">
 
                     <div id="pGen1Text">Power Generator 1</div>
                     <div id="pGen1Amount">0.00</div>
-                    <div id="pGen1Cost" class="buttonHover" onclick="buyPU1()">100 Diamonds</div>
+                    <div id="pGen1Cost" class="buttonHover genBuy" onclick="buyPU1()">100 Diamonds</div>
 
                 </div>
 
@@ -91,7 +92,7 @@
 
                     <div id="pGen2Text">Power Generator 2</div>
                     <div id="pGen2Amount">0.00</div>
-                    <div id="pGen2Cost" class="buttonHover" onclick="buyPU2()">1000 Diamonds</div>
+                    <div id="pGen2Cost" class="buttonHover genBuy" onclick="buyPU2()">1000 Diamonds</div>
 
                 </div>
 
@@ -99,7 +100,9 @@
 
                     <div id="pGen3Text">Power Generator 3</div>
                     <div id="pGen3Amount">0.00</div>
-                    <div id="pGen3Cost" class="buttonHover" onclick="buyPU3()">10000 Diamonds</div>
+                    <div id="pGen3Cost" class="buttonHover genBuy" onclick="buyPU3()">10000 Diamonds</div>
+
+                </div>
 
                 </div>
 
@@ -109,9 +112,9 @@
 
         <div id="rubiesTab" data-tab-content>
 
-            <div id="prestigeButton" class="buttonHover" onclick="prestige()">Rubies Whatever</div>
+            <div id="prestigeButton" class="buttonHover redRubies" onclick="prestige()">Rubies Whatever</div>
 
-            <div id="ticksUpgradeButton" class="buttonHover" onclick="ticksUpgrade()">Ticks Whatever</div>
+            <div id="ticksUpgradeButton" class="buttonHover pinkTicks" onclick="ticksUpgrade()">Ticks Whatever</div>
 
 
         </div>
@@ -123,15 +126,15 @@
                 <button id="loadButton" class="buttonHover" onclick="loadGame()">Load</button>
             </div>
 
+            <a href="http://00zerro.github.io/mainPage" style="color:white">My main page! (it's very new, it will be improved soon)</a>
+
             <div id="patchNotes">
                 <img src="img/game.png" width="640" height="480"><Br>
-                <b>Version 0.3 (11th of August 2023)</b><Br>
+                <b>Version 0.3.1 (11th of August 2023)</b><Br>
                     <ul>
-                        <li>New Resource (for real) - RUBIES</li>
-                        <li>NEW DIAMOND UPGRADE</li>
-                        <li></li>
-                        <li>Fixed an issue where the Power effect was not applied properly</li>
-                        <li>Fixed an issue where the AutoBuy button didn't save</li>
+                        <li>NEW Visual style, with more color coding to come</li>
+
+                        <li>Fixed a bug where the resource icon wasn't aligned properly to the text</li>
                     </ul>
                     
             </div>
@@ -141,6 +144,5 @@
     </div>
 
     <script src="js/script.js" defer></script>
-    <script src="js/breakInfinity.js" defer></script>
 </body>
 </html>
