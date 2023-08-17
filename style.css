@@ -175,7 +175,7 @@ body{
     display: none;
 }
 
-#autoBuyButton{
+#autoBuyButton, #powerAutoBuyButton{
     margin: auto;
     border: solid 1px rgb(255, 255, 255);
     width: 10%;
@@ -218,4 +218,17 @@ body{
 li{
     display: flex;
     align-items: center;
+    gap: 5px;
+}
+
+#rubyMilestones{
+    text-align: center;
+    margin: 30px;
+}
+
+.milestone{
+    margin: 50px auto;
+    border: dotted;
+    width: 30%;
+    background-color: black;
 }

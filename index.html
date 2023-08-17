@@ -12,8 +12,13 @@
         <ul id="resourcesList">
             <div class="row">
                 <div class="column">            
-                    <li id="coinsAmount" class="yellowCoins">Coins: 0</li>
-                    <li id="diamondsAmount" class="blueDiamonds">Diamonds: 0</li>
+                    <li id="coinsAmount" class="yellowCoins">
+                        Coins: 0
+                    </li>
+                    <li id="diamondsAmount" class="blueDiamonds">
+                        
+                        Diamonds: 0
+                    </li>
                 </div>
                 <div class="column">
                     <li id="powerAmount" class="blueDiamonds">Power: 0</li>
@@ -33,6 +38,7 @@
             <li data-tab-target="#coinsTab" class="active tab yellowCoins"><b>Coins</b></li>
             <li data-tab-target="#diamondsTab" id="diamondsTabButton" class="tab blueDiamonds"><b>Diamonds</b></li>
             <li data-tab-target="#rubiesTab" id="rubiesTabButton" class="tab redRubies"><b>Rubies</b></li>
+            <!--<li data-tab-target="#achievementsTab" id="achievementsTabButton" class="tab achievements"><b>Achievements</b></li>-->
             <li data-tab-target="#optionsTab" class="tab"><b>Options</b></li>
         </ul>
     </div>
@@ -41,7 +47,7 @@
 
     <div id="tab-content">
 
-        <div id="coinsTab" data-tab-content class="active">
+        <div id="coinsTab" data-tab-content class="active"><!--active-->
 
             <div id="autoBuyButton" class="autoBuyNotBought buttonHover" onclick="switchAutoBuy()">
                 AutoBuy: OFF
@@ -76,7 +82,9 @@
 
             <p class="diamondUpgradesEffects diamondUpgradesText" id="effectText"></p>
 
-            <p class="diamondUpgradesText"><b>Power Generators</b></p>
+            <p class="diamondUpgradesText"><b>Power Generators</b>            <div id="powerAutoBuyButton" class="autoBuyNotBought buttonHover" onclick="switchPowerAutoBuy()">
+                AutoBuy: OFF
+            </div></p>
 
             <div id="powerGenerators" class="blueDiamonds">
 
@@ -110,11 +118,19 @@
 
         </div>
 
-        <div id="rubiesTab" data-tab-content>
+        <div id="rubiesTab" data-tab-content class="">
 
             <div id="prestigeButton" class="buttonHover redRubies" onclick="prestige()">Rubies Whatever</div>
 
             <div id="ticksUpgradeButton" class="buttonHover pinkTicks" onclick="ticksUpgrade()">Ticks Whatever</div>
+
+            <div id="rubyMilestones">
+                    <p class="redRubies"><b>Ruby Milestones</b></p>
+                    <div class="milestone redRubies"><b>Prestige 1 time</b><br>Reward: You automatically gain 100% of the Diamonds you would on Reset</div>
+                    <div class="milestone redRubies"><b>Prestige 2 times</b><br>Reward: Every Prestige doubles your Ruby gain</div>
+                    <div class="milestone redRubies"><b>Prestige 3 times</b><br>Reward: Automate Power Generators</div>
+
+            </div>
 
 
         </div>
@@ -123,18 +139,18 @@
 
             <div id="savingloading">
                 <button id="saveButton" class="buttonHover" onclick="saveGame()">Save</button>
-                <button id="loadButton" class="buttonHover" onclick="loadGame()">Load</button>
+                <button id="loadButton" class="buttonHover" onclick="loadGame()">Load</button>(game AutoSaves every 30 seconds)
             </div>
 
             <a href="http://00zerro.github.io/mainPage" style="color:white">My main page! (it's very new, it will be improved soon)</a>
 
             <div id="patchNotes">
                 <img src="img/game.png" width="640" height="480"><Br>
-                <b>Version 0.3.1 (16th of August 2023)</b><Br>
+                <b>Version 0.3.2 (17th of August 2023)</b><Br>
                     <ul>
-                        <li>NEW Visual style, with more color coding to come</li>
-
-                        <li>Fixed a bug where the resource icon wasn't aligned properly to the text</li>
+                        <li>NEW Autosaving! (now is set at 30 seconds)</li>
+                        <li>NEW Ruby Milestones!</li>
+                        <li>Balancing: Made the game MUCH faster (the game runs as 175% the speed before, making it a much shorter and enjoyable experience)</li>
                     </ul>
                     
             </div>

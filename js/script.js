@@ -9,6 +9,7 @@ game = {
         onReset: 0,
         coinsNeeded: 10000000000000,
         increase: 4,
+        auto: false,
     },
 
     // COIN UPGRADES
@@ -58,6 +59,20 @@ game = {
         ticks: 1000,
     },
 
+    achievements: [
+        { completed: false},
+        { completed: false},
+        { completed: false},
+        { completed: false},
+        { completed: false},
+        { completed: false},
+        { completed: false},
+        { completed: false},
+        { completed: false},
+        { completed: false},
+
+    ],
+
 }
 
 
@@ -65,7 +80,7 @@ game = {
 setInterval(function setText() {
 
     // RESOURCES
-    document.getElementById('coinsAmount').innerHTML = '<img src="img/coins.png" class="icons"> Coins: ' + format(game.coins);
+    document.getElementById('coinsAmount').innerHTML = '<img src="img/coins.png" class="icons">Coins: ' + format(game.coins);
     document.getElementById('diamondsAmount').innerHTML = '<img src="img/expense.png" class="icons"> Diamonds: ' + format(game.diamonds.amount);
     document.getElementById('powerAmount').innerHTML = '<img src="img/power.png" class="icons"> Power: ' + format(game.power.amount);
     document.getElementById('rubiesAmount').innerHTML = '<img src="img/ruby.png" class="icons"> Rubies: ' + format(game.rubies.amount);
@@ -188,11 +203,28 @@ function beforeRubiesProductionLoop(){
 
     }
 
+    if ( game.diamonds.auto == true){
+        buyPU3();
+        buyPU2();
+        buyPU1();
+
+    }
+
+    if (game.rubies.timesPrestiged >= 3){
+        var element = document.getElementById('powerAutoBuyButton')
+        element.classList.remove('autoBuyNotBought')
+
+    }
+
+    if ( game.rubies.timesPrestiged >= 1){
+        game.diamonds.amount = game.diamonds.amount + game.diamonds.onReset;
+    }
+
 }
 
 // GAME TIME 
 
-setInterval(beforeRubiesProductionLoop, game.ticksUpgrade.ticks);
+setInterval(beforeRubiesProductionLoop, 250);
 
 // FORMATING NUMBERS
 
@@ -212,6 +244,8 @@ function saveGame(){
 function loadGame(){
     game = JSON.parse(localStorage.getItem("data"))
 }
+
+setInterval(saveGame, 30000)
 
 // TABS
 
@@ -412,7 +446,7 @@ function buyDU3(){
         game.diamondUpgrades[2].bought = true;
 
         //EFFECT
-        game.diamondUpgrades[2].effect = 0.3;
+        game.diamondUpgrades[2].effect = 0.5;
     }
 
 }
@@ -480,9 +514,21 @@ function switchAutoBuy(){
     }
 }
 
+function switchPowerAutoBuy(){
+    game.diamonds.auto = !game.diamonds.auto;
+
+    if (game.diamonds.auto == true) {
+        document.getElementById('powerAutoBuyButton').innerHTML = "AutoBuy: ON"
+    }
+    
+    if (game.diamonds.auto == false) {
+        document.getElementById('powerAutoBuyButton').innerHTML = "AutoBuy: OFF"
+    }
+}
+
 function prestige(){
 
-    if(game.diamondUpgrades[3].amonut >= game.rubies.powerGen3Needed){
+    if(game.power.powerUpgrades[2].amount >= game.rubies.powerGen3Needed){
     game.coins = 10;
     game.costIncrease = 1.3;
 
@@ -520,6 +566,11 @@ function prestige(){
     game.rubies.amount = game.rubies.amount + game.rubies.onPrestige;
     game.rubies.powerGen3Needed = game.rubies.powerGen3Needed * 1.5;
     game.rubies.timesPrestiged = game.rubies.timesPrestiged + 1;
+
+    if ( game.rubies.timesPrestiged >= 2){
+        game.rubies.onPrestige = game.rubies.onPrestige * 2;
+    }
+
 }
 }
 
@@ -534,3 +585,6 @@ function ticksUpgrade(){
 }
 setInterval(beforeRubiesProductionLoop, game.ticksUpgrade.ticks);
 }
+
+// ACHIEVEMENTS
+
