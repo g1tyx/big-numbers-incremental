@@ -404,6 +404,7 @@ var cnRegReplace = new Map([
     [/^On reset you will gain (.+) Diamonds$/, '重置时你将会得到 $1 钻石'],
     [/^Next at (.+) points$/, '下一个在 $1 点数'],
     [/^Prestige Coins and Diamonds for (.+) Rubies$/, '声望金币和钻石以获得 $1 红宝石'],
+    [/^Prestige Coins and Diamonds for (.+) Rubies$/, '声望金币和钻石以获得 $1 红宝石'],
     [/^([\d\.]+)\/sec$/, '$1\/秒'],
     [/^([\d\.,]+)\/sec$/, '$1\/秒'],
     [/^([\d\.,]+) OOMs\/sec$/, '$1 OOMs\/秒'],
